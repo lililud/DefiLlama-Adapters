@@ -12,6 +12,8 @@ const config = {
     USDY: "A1KLoBrKBde8Ty9qtNQUtq3C2ortoC3u7twggz7sEto6",
   },
   ethereum: {
+    rOUSG: "0x54043c656F0FAd0652D9Ae2603cDF347c5578d00",
+    rUSDY: "0xaf37c1167910ebC994e266949387d2c7C326b879",
     OUSG: "0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92",
     USDY: "0x96F6eF951840721AdBF46Ac996b59E0235CB985C",
     USDYc: "0xe86845788d6e3e5c2393ade1a051ae617d974c09",
@@ -72,6 +74,9 @@ Object.keys(config).forEach((chain) => {
           abi: "erc20:totalSupply",
           calls: fundAddresses,
         });
+        if (chain === "ethereum") {
+          console.log("Ethereum supplies", supplies);
+        }
         api.addTokens(fundAddresses, supplies);
       }
       return api.getBalances();
